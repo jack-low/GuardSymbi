@@ -185,14 +185,14 @@ module "ReportGenerator" version "1.0" {
 
 * **シナリオ1: レポート生成**
 
-  ```
+```
   [Start: data.json]
         |
         v
       [load]
         |
         v
-  ```
+```
 
 \[validateAndOptimize]
 |
@@ -205,6 +205,7 @@ v
 ```
 
 - **シナリオ2: バッチ処理**
+
 ```
 
 \[Start: file list]
@@ -220,8 +221,6 @@ v       v       v
 \|       |       |
 v       v       v
 \[End: individual PDFs]
-
-```
 
 - **シナリオ3: インタラクティブデバッグ**
 ```
@@ -273,4 +272,3 @@ v       v       v
 
 ---
 
-```
