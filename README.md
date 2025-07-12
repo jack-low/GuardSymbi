@@ -39,9 +39,9 @@
 
 ```
 step: 処理呼び出し
-└─ guard 成功? → 続行 : else → AI.suggestFix + return
+ └─ guard 成功? → 続行 : else → AI.suggestFix + return
 step: 次処理
-└─ onError ブロック? → 内部 retry / exit / AI.fix
+ └─ onError ブロック? → 内部 retry / exit / AI.fix
 ```
 
 #### 2.5 サンプルコード
@@ -161,9 +161,9 @@ module "ReportGenerator" version "1.0" {
                      +-----------+     +----------+
                            |               |
                            v               |
-                    +----------------+      |
-                    | ErrorChecker   |      |
-                    +----------------+      |
+                    +----------------+     |
+                    | ErrorChecker   |     |
+                    +----------------+     |
                            |               |
                            v               |
                     +-------------+        |
@@ -192,15 +192,15 @@ module "ReportGenerator" version "1.0" {
       [load]
         |
         v
-```
+  [validateAndOptimize]
 
-\[validateAndOptimize]
-|
-v
-\[report]
-|
-v
-\[End: report.pdf]
+        |
+        v
+  [report]
+
+        |
+        v
+  [End: report.pdf]
 
 ```
 
@@ -208,23 +208,24 @@ v
 
 ```
 
-\[Start: file list]
-\|       |       |
-v       v       v
-\[load]  \[load]  \[load]
-\|       |       |
-v       v       v
-\[validateAndOptimize] x3
-\|       |       |
-v       v       v
-\[report] \[report] \[report]
-\|       |       |
-v       v       v
-\[End: individual PDFs]
+ [Start: file list]
+    |     |      |
+    v     v      v
+ [load] [load] [load]
+    |     |      |
+    v     v      v
+ [validateAndOptimize] x3
+    |       |      |
+    v       v      v
+ [report][report][report]
+    |       |       |
+    v       v       v
+ [End: individual PDFs]
 
-- **シナリオ3: インタラクティブデバッグ**
 ```
+- **シナリオ3: インタラクティブデバッグ**
 
+```
 > run load    # ロードタスクを実行
 > ↳ guardチェック → 成功 → 次へ
 > inspect context  # 現在の状態確認
